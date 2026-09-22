@@ -1,0 +1,17 @@
+{
+  "total_rows": 3,
+  "malicious": 3,
+  "benign": 0,
+  "class_balance": 1.0,
+  "battles_included": 3,
+  "technique_distribution": {},
+  "attacker_distribution": {},
+  "gnn_score_stats": {
+    "mean": 0.5,
+    "stdev": 0.0,
+    "min": 0.5,
+    "max": 0.5
+  },
+  "avg_sigma_alerts_per_detection": 1,
+  "generated_at": "2026-09-06T15:44:23.050278+00:00"
+}

@@ -1,0 +1,3 @@
+"""
+Base SIGMA rules package.
+"""

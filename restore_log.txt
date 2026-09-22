@@ -1,0 +1,18 @@
+CSS block length: 6264
+Dashboard length: 1085274
+Style start: 780, end: 25449
+First 500 chars of restored CSS:
+<style>
+/* ── Base ─────────────────────────────────────────────────────────────── */
+html, body, [data-testid="stAppViewContainer"] {
+    background-color: #070b14 !important;
+    color: #e2e8f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+[data-testid="stSidebar"] {
+    background-color: #0d1117 !important;
+    border-right: 1px solid #1e293b;
+}
+[data-testid="stSidebar"] * { color: #e2e8f0 !important; }
+
+/* ── Metric cards ───────────────────────────────────────────────

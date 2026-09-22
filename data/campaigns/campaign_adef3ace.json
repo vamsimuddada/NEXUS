@@ -1,0 +1,273 @@
+{
+  "campaign_id": "adef3ace",
+  "start_time": "2026-09-11T19:13:28.813969+00:00",
+  "battles_completed": 3,
+  "battle_ids": [
+    "cc803d7a",
+    "970503cd",
+    "90eb8a73"
+  ],
+  "f1_history": [
+    0.818,
+    0.778,
+    0.791
+  ],
+  "precision_history": [
+    0.9,
+    0.648,
+    0.68
+  ],
+  "recall_history": [
+    0.75,
+    0.972,
+    0.944
+  ],
+  "sigma_rule_history": [
+    10,
+    14,
+    15
+  ],
+  "elo_history": [
+    {
+      "VIPER": 802.3,
+      "KRAKEN": 804.9,
+      "GHOST": 710.4,
+      "HYDRA": 506.9,
+      "NOVA": 870.6,
+      "CIPHER": 654.2,
+      "DEFENDER": 872.1
+    },
+    {
+      "VIPER": 759.4,
+      "KRAKEN": 767.9,
+      "GHOST": 706.8,
+      "HYDRA": 509.7,
+      "NOVA": 825.3,
+      "CIPHER": 641.1,
+      "DEFENDER": 974.5
+    },
+    {
+      "VIPER": 756.5,
+      "KRAKEN": 744.6,
+      "GHOST": 699.3,
+      "HYDRA": 516.8,
+      "NOVA": 823.5,
+      "CIPHER": 636.5,
+      "DEFENDER": 997.7
+    }
+  ],
+  "nova_evasion_history": [
+    0.0,
+    0.167,
+    0.417
+  ],
+  "soar_action_history": [
+    36,
+    51,
+    46
+  ],
+  "winner_history": [
+    "defender",
+    "defender",
+    "defender"
+  ],
+  "final_elo_table": [
+    {
+      "rank": 1,
+      "entity": "DEFENDER",
+      "elo": 998.0,
+      "peak_elo": 1389.0,
+      "battles": 669,
+      "wins": 6938,
+      "losses": 2194,
+      "win_rate": 0.76,
+      "evasion_rate": 0.0,
+      "top_technique": "\u2014"
+    },
+    {
+      "rank": 2,
+      "entity": "NOVA",
+      "elo": 824.0,
+      "peak_elo": 1300.0,
+      "battles": 669,
+      "wins": 840,
+      "losses": 682,
+      "win_rate": 0.552,
+      "evasion_rate": 0.552,
+      "top_technique": "T1071"
+    },
+    {
+      "rank": 3,
+      "entity": "VIPER",
+      "elo": 756.0,
+      "peak_elo": 1200.0,
+      "battles": 669,
+      "wins": 245,
+      "losses": 1277,
+      "win_rate": 0.161,
+      "evasion_rate": 0.161,
+      "top_technique": "T1083"
+    },
+    {
+      "rank": 4,
+      "entity": "KRAKEN",
+      "elo": 745.0,
+      "peak_elo": 1050.0,
+      "battles": 669,
+      "wins": 374,
+      "losses": 1148,
+      "win_rate": 0.246,
+      "evasion_rate": 0.246,
+      "top_technique": "T1059"
+    },
+    {
+      "rank": 5,
+      "entity": "GHOST",
+      "elo": 699.0,
+      "peak_elo": 982.0,
+      "battles": 669,
+      "wins": 425,
+      "losses": 1097,
+      "win_rate": 0.279,
+      "evasion_rate": 0.279,
+      "top_technique": "T1003"
+    },
+    {
+      "rank": 6,
+      "entity": "CIPHER",
+      "elo": 636.0,
+      "peak_elo": 1100.0,
+      "battles": 669,
+      "wins": 278,
+      "losses": 1244,
+      "win_rate": 0.183,
+      "evasion_rate": 0.183,
+      "top_technique": "T1078"
+    },
+    {
+      "rank": 7,
+      "entity": "HYDRA",
+      "elo": 517.0,
+      "peak_elo": 960.0,
+      "battles": 669,
+      "wins": 32,
+      "losses": 1490,
+      "win_rate": 0.021,
+      "evasion_rate": 0.021,
+      "top_technique": "T1059"
+    }
+  ],
+  "technique_stats": [
+    {
+      "technique": "T1078",
+      "uses": 2562,
+      "evaded": 1045,
+      "detected": 1517,
+      "evasion_rate": 0.408,
+      "detection_rate": 0.592
+    },
+    {
+      "technique": "T1071",
+      "uses": 1817,
+      "evaded": 583,
+      "detected": 1234,
+      "evasion_rate": 0.321,
+      "detection_rate": 0.679
+    },
+    {
+      "technique": "T1003",
+      "uses": 959,
+      "evaded": 250,
+      "detected": 709,
+      "evasion_rate": 0.261,
+      "detection_rate": 0.739
+    },
+    {
+      "technique": "T1083",
+      "uses": 1241,
+      "evaded": 162,
+      "detected": 1079,
+      "evasion_rate": 0.131,
+      "detection_rate": 0.869
+    },
+    {
+      "technique": "T1059",
+      "uses": 1405,
+      "evaded": 143,
+      "detected": 1262,
+      "evasion_rate": 0.102,
+      "detection_rate": 0.898
+    },
+    {
+      "technique": "T1486",
+      "uses": 372,
+      "evaded": 6,
+      "detected": 366,
+      "evasion_rate": 0.016,
+      "detection_rate": 0.984
+    },
+    {
+      "technique": "T1021",
+      "uses": 706,
+      "evaded": 5,
+      "detected": 701,
+      "evasion_rate": 0.007,
+      "detection_rate": 0.993
+    },
+    {
+      "technique": "T1055",
+      "uses": 70,
+      "evaded": 0,
+      "detected": 70,
+      "evasion_rate": 0.0,
+      "detection_rate": 1.0
+    }
+  ],
+  "evolution_summary": {
+    "total_sigma_rules": 16,
+    "auto_generated_rules": 6,
+    "gnn_updates": 3,
+    "agent_profiles": {
+      "profiles_stored": 6,
+      "storage_backend": "sqlite",
+      "agents": [
+        {
+          "name": "VIPER",
+          "battles": 3,
+          "top_technique": "T1078",
+          "avg_stealth": 0.72
+        },
+        {
+          "name": "KRAKEN",
+          "battles": 3,
+          "top_technique": "T1059",
+          "avg_stealth": 0.72
+        },
+        {
+          "name": "GHOST",
+          "battles": 3,
+          "top_technique": "T1078",
+          "avg_stealth": 0.72
+        },
+        {
+          "name": "HYDRA",
+          "battles": 3,
+          "top_technique": "T1071",
+          "avg_stealth": 0.72
+        },
+        {
+          "name": "NOVA",
+          "battles": 3,
+          "top_technique": "T1071",
+          "avg_stealth": 0.55
+        },
+        {
+          "name": "CIPHER",
+          "battles": 3,
+          "top_technique": "T1078",
+          "avg_stealth": 0.72
+        }
+      ]
+    }
+  }
+}

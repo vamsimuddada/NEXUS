@@ -1,0 +1,1 @@
+from defender.gnn.graph_detector import GraphAnomalyDetector

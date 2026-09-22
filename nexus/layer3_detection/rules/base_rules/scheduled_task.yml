@@ -1,0 +1,15 @@
+title: Scheduled Task Creation
+id: 5e6f7g8h-9i0j-1k2l-3m4n-5o6p7q8r9s0t
+status: experimental
+description: Scheduled task creation from command line
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        event_id: 4688
+        details|contains: 'schtasks'
+    condition: selection
+level: medium
+tags:
+    - attack.t1053

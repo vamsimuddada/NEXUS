@@ -1,0 +1,15 @@
+title: Defense Evasion
+id: 0j1k2l3m-4n5o-6p7q-8r9s-0t1u2v3w4x5y
+status: experimental
+description: Security tool disabled/tampered
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        event_id: 4688
+        details|contains: 'disable'
+    condition: selection
+level: high
+tags:
+    - attack.t1562

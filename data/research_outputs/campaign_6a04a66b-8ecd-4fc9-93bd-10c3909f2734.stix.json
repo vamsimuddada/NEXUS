@@ -1,0 +1,54 @@
+{
+  "type": "bundle",
+  "id": "bundle--933a4113-028f-4cb9-a539-72f4a71dfcdc",
+  "objects": [
+    {
+      "type": "campaign",
+      "spec_version": "2.1",
+      "id": "campaign--f4430c8e-0efb-4ab3-87a9-deb6a016bd7e",
+      "created": "2026-09-12T19:09:36.564891Z",
+      "modified": "2026-09-12T19:09:36.564891Z",
+      "name": "Simulation Campaign 6a04a66b-8ecd-4fc9-93bd-10c3909f2734",
+      "description": "Campaign conducted by Unknown in simulation 6a04a66b-8ecd-4fc9-93bd-10c3909f2734",
+      "aliases": [
+        "6a04a66b-8ecd-4fc9-93bd-10c3909f2734"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--0fb2fbab-9155-4793-9882-fd423b2bd05f",
+      "created": "2026-09-12T19:09:36.564891Z",
+      "modified": "2026-09-12T19:09:36.564891Z",
+      "name": "Attack Pattern T1000",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1000"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--4d9913dc-bca3-40e2-a21a-5429ff12d847",
+      "created": "2026-09-12T19:09:36.564891Z",
+      "modified": "2026-09-12T19:09:36.564891Z",
+      "name": "Indicator for T1000",
+      "pattern": "[process:name = 'malware_0.exe']",
+      "pattern_type": "stix",
+      "valid_from": "2026-09-12T19:09:36.564891Z",
+      "description": "Indicator for technique T1000"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d57a1bdd-e823-4a0f-a0b9-d2a204c747a6",
+      "created": "2026-09-12T19:09:36.564891Z",
+      "modified": "2026-09-12T19:09:36.564891Z",
+      "relationship_type": "indicates",
+      "source_ref": "indicator--4d9913dc-bca3-40e2-a21a-5429ff12d847",
+      "target_ref": "attack-pattern--0fb2fbab-9155-4793-9882-fd423b2bd05f"
+    }
+  ]
+}

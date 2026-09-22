@@ -1,0 +1,14 @@
+title: Admin Group Modification
+id: 6f7g8h9i-0j1k-2l3m-4n5o-6p7q8r9s0t1u
+status: experimental
+description: User added to admin group
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        event_id: 4732
+    condition: selection
+level: high
+tags:
+    - attack.t1136

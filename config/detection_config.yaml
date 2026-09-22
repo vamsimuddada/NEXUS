@@ -1,0 +1,41 @@
+# NEXUS Detection System Configuration
+detection_engine:
+  mode: "ensemble" # Can be sigma_only, gnn_only, llm_only, ensemble
+  alert_threshold: 0.75
+  
+  ensemble_weights:
+    sigma: 0.3
+    gnn: 0.4
+    llm_debate: 0.3
+
+sigma:
+  rules_dir: "data/sigma_rules"
+  fail_on_error: false
+  
+gnn:
+  architecture: "GraphSAGE"
+  hidden_channels: 64
+  num_layers: 3
+  dropout: 0.2
+  learning_rate: 0.001
+  epochs: 100
+  batch_size: 32
+  model_save_path: "data/models/gnn_detector.pt"
+  node_features:
+    - "degree"
+    - "event_frequency"
+    - "anomaly_score"
+
+llm_debate:
+  agents:
+    - role: "prosecutor"
+      model: "mistral"
+      focus: "find evidence of compromise"
+    - role: "defense"
+      model: "mistral"
+      focus: "find benign explanations"
+    - role: "judge"
+      model: "llama3"
+      focus: "evaluate arguments and decide"
+  max_rounds: 3
+  confidence_threshold: 0.8

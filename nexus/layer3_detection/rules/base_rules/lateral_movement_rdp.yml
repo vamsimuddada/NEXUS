@@ -1,0 +1,15 @@
+title: Lateral Movement via RDP
+id: 8h9i0j1k-2l3m-4n5o-6p7q-8r9s0t1u2v3w
+status: experimental
+description: RDP logon from unusual source (Event 4624 type 10)
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        event_id: 4624
+        details|contains: 'Logon Type: 10'
+    condition: selection
+level: medium
+tags:
+    - attack.t1021.001

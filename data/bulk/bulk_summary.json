@@ -1,0 +1,52 @@
+{
+  "n_simulations": 100,
+  "generated_at": "2026-09-10T04:28:39.769488+00:00",
+  "f1": {
+    "mean": 0.7039,
+    "stdev": 0.128,
+    "median": 0.7405,
+    "min": 0.375,
+    "max": 0.857,
+    "p25": 0.689,
+    "p75": 0.788
+  },
+  "precision": {
+    "mean": 0.7921,
+    "stdev": 0.2047,
+    "median": 0.847,
+    "min": 0.231,
+    "max": 1.0,
+    "p25": 0.774,
+    "p75": 0.913
+  },
+  "recall": {
+    "mean": 0.6953,
+    "stdev": 0.1338,
+    "median": 0.694,
+    "min": 0.361,
+    "max": 1.0,
+    "p25": 0.611,
+    "p75": 0.75
+  },
+  "duration_s": {
+    "mean": 2.163,
+    "stdev": 0.1866,
+    "median": 2.19,
+    "min": 1.56,
+    "max": 2.41,
+    "p25": 2.16,
+    "p75": 2.27
+  },
+  "winners": {
+    "attacker": 0,
+    "defender": 70,
+    "draw": 30
+  },
+  "winner_rates": {
+    "attacker": 0.0,
+    "defender": 0.7,
+    "draw": 0.3
+  },
+  "rule_generation_rate": 0.9,
+  "avg_auto_rules_per_sim": 3.98
+}

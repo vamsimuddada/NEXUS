@@ -1,0 +1,14 @@
+title: Suspicious Logon Activity
+id: 1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p
+status: experimental
+description: Detects multiple failed logons followed by success (Event 4625 then 4624)
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        event_id: 4625
+    condition: selection
+level: medium
+tags:
+    - attack.t1078

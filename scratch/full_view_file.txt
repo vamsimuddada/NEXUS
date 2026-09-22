@@ -1,0 +1,379 @@
+Created At: 2026-09-13T15:19:07+05:30
+Completed At: 2026-09-13T15:19:08+05:30
+File Path: `file:///C:/Users/VAMSI/OneDrive/Desktop/NEXUS/dashboard/app_dash.py`
+Total Lines: 371
+Total Bytes: 16754
+Showing lines 1 to 371
+The following code has been modified to include a line number before every line, in the format: <line_number>: <original_line>. Please note that any changes targeting the original code should remove the line number, colon, and leading space.
+1: import dash
+2: from dash import dcc, html, dash_table
+3: from dash.dependencies import Input, Output
+4: import dash_bootstrap_components as dbc
+5: import plotly.express as px
+6: import plotly.graph_objects as go
+7: import pandas as pd
+8: import sqlite3
+9: import os
+10: import json
+11: from datetime import datetime
+12: import networkx as nx
+13: 
+14: # --- CONFIGURATION & SETUP ---
+15: app = dash.Dash(
+16:     __name__, 
+17:     title="NEXUS Command Center",
+18:     external_stylesheets=[dbc.themes.DARKLY]
+19: )
+20: 
+21: # Custom CSS injected directly
+22: app.index_string = '''
+23: <!DOCTYPE html>
+24: <html>
+25:     <head>
+26:         {%metas%}
+27:         <title>{%title%}</title>
+28:         {%favicon%}
+29:         {%css%}
+30:         <style>
+31:             body { background-color: #070b14; color: #e2e8f0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+32:             .card { background-color: #111827; border: none; border-left: 3px solid #00d2ff; margin-bottom: 15px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5); }
+33:             .card-header { background-color: rgba(0,210,255,0.05); color: #00d2ff; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #1e293b; }
+34:             .metric-value { font-size: 2.2rem; font-weight: bold; color: #00d2ff; }
+35:             .metric-label { font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+36:             .sidebar { background-color: #111827; height: 100vh; padding: 20px; border-right: 1px solid #1e293b; }
+37:             .header-nav { padding: 20px; border-bottom: 1px solid #1e293b; background-color: #070b14; }
+38:             .status-badge { background-color: rgba(16, 185, 129, 0.2); color: #10b981; padding: 4px 10px; border-radius: 4px; font-weight: bold; font-size: 0.85rem; border: 1px solid #10b981; }
+39:             .nav-tabs .nav-link { color: #94a3b8; }
+40:             .nav-tabs .nav-link.active { background-color: #111827 !important; color: #00d2ff !important; border-bottom: 2px solid #00d2ff !important; border:none; }
+41:             .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner * { font-family: inherit !important; }
+42:         </style>
+43:     </head>
+44:     <body>
+45:         {%app_entry%}
+46:         <footer>
+47:             {%config%}
+48:             {%scripts%}
+49:             {%renderer%}
+50:         </footer>
+51:     </body>
+52: </html>
+53: '''
+54: 
+55: # --- DATABASE CONNECTIONS ---
+56: DB_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data'))
+57: DB_ELO = os.path.join(DB_DIR, 'nexus_elo.db')
+58: DB_RESULTS = os.path.join(DB_DIR, 'simulation_results.db')
+59: DB_GAPS = os.path.join(DB_DIR, 'nexus_gaps.db')
+60: DB_TRAINING = os.path.join(DB_DIR, 'nexus_training.db')
+61: 
+62: def load_data(db_path, query):
+63:     if not os.path.exists(db_path):
+64:         print(f"DEBUG: Path does not exist - {db_path}")
+65:         return pd.DataFrame()
+66:     try:
+67:         with sqlite3.connect(db_path) as conn:
+68:             return pd.read_sql(query, conn)
+69:     except Exception as e:
+70:         print(f"DEBUG: Exception loading {db_path} with query {query}: {e}")
+71:         return pd.DataFrame()
+72: 
+73: # --- HELPER UI FUNCTIONS ---
+74: def create_kpi_card(title, id_name):
+75:     return dbc.Card([
+76:         dbc.CardBody([
+77:             html.Div(title, className="metric-label"),
+78:             html.Div(id=id_name, className="metric-value", children="0")
+79:         ])
+80:     ])
+81: 
+82: # --- APP LAYOUT ---
+83: sidebar = html.Div([
+84:     html.H2("NEXUS", style={'color': '#00d2ff', 'fontWeight': 'bold', 'marginBottom': '0'}),
+85:     html.P("Control Panel", style={'color': '#94a3b8', 'fontSize': '0.9rem', 'marginTop': '-5px'}),
+86:     html.Hr(style={'borderColor': '#1e293b'}),
+87:     
+88:     dbc.Label("AI Provider"),
+89:     dbc.Select(
+90:         id="provider-select",
+91:         options=[
+92:             {"label": "Ollama (Local)", "value": "local"},
+93:             {"label": "Gemini", "value": "gemini"},
+94:             {"label": "Mock Mode", "value": "mock"}
+95:         ],
+96:         value="local",
+97:         style={'backgroundColor': '#0f172a', 'color': '#fff', 'border': '1px solid #334155'}
+98:     ),
+99:     html.Div(id="provider-warning", style={'marginTop': '10px', 'fontSize': '0.85rem'}),
+100:     
+101:     html.Hr(style={'borderColor': '#1e293b'}),
+102:     dbc.Button("▶ Start Campaign", color="primary", style={'width': '100%', 'marginBottom': '10px', 'fontWeight': 'bold'}),
+103:     dbc.Button("⏹ Stop / Reset", outline=True, color="secondary", style={'width': '100%', 'marginBottom': '20px'}),
+104:     
+105:     html.Div([
+106:         html.P("System Health", style={'color': '#00d2ff', 'fontWeight': 'bold', 'marginBottom': '10px'}),
+107:         html.Div("Tri-Brain CPU", style={'fontSize': '0.8rem', 'color': '#94a3b8'}),
+108:         dbc.Progress(value=45, color="info", className="mb-3", style={"height": "5px"}),
+109:         html.Div("GNN Memory", style={'fontSize': '0.8rem', 'color': '#94a3b8'}),
+110:         dbc.Progress(value=22, color="info", style={"height": "5px"}),
+111:     ], style={'padding': '15px', 'backgroundColor': '#0f172a', 'borderRadius': '5px'})
+112: ], className="sidebar")
+113: 
+114: header = html.Div([
+115:     dbc.Row([
+116:         dbc.Col([
+117:             html.H3("Autonomous Cyber Warfare Simulation", style={'margin': '0', 'color': '#e2e8f0'})
+118:         ], width=6),
+119:         dbc.Col([
+120:             html.Div(id="live-status", className="float-end", style={'textAlign': 'right'})
+121:         ], width=6)
+122:     ])
+123: ], className="header-nav")
+124: 
+125: kpi_row = dbc.Row([
+126:     dbc.Col(create_kpi_card("Detection Rate", "kpi-detection"), width=2),
+127:     dbc.Col(create_kpi_card("Defense Actions", "kpi-defense"), width=2),
+128:     dbc.Col(create_kpi_card("Active Attackers", "kpi-attackers"), width=2),
+129:     dbc.Col(create_kpi_card("Rules Generated", "kpi-rules"), width=2),
+130:     dbc.Col(create_kpi_card("GNN Retrains", "kpi-gnn"), width=2),
+131:     dbc.Col(create_kpi_card("Total Events", "kpi-events"), width=2),
+132: ], className="mt-4 mb-4")
+133: 
+134: tabs = dbc.Tabs([
+135:     dbc.Tab(label="Command Center", tab_id="tab-1", children=[
+136:         dbc.Row([
+137:             dbc.Col([
+138:                 dbc.Card([
+139:                     dbc.CardHeader("Attacker vs Defender (ELO Timeline)"),
+140:                     dbc.CardBody([dcc.Graph(id="elo-timeline", style={'height': '350px'})])
+141:                 ])
+142:             ], width=8),
+143:             dbc.Col([
+144:                 dbc.Card([
+145:                     dbc.CardHeader("Adversary Leaderboard"),
+146:                     dbc.CardBody([html.Div(id="leaderboard-table")])
+147:                 ], style={'height': '100%'})
+148:             ], width=4)
+149:         ], className="mt-3"),
+150:         dbc.Row([
+151:             dbc.Col([
+152:                 dbc.Card([
+153:                     dbc.CardHeader("Recent High-Severity Events"),
+154:                     dbc.CardBody([
+155:                         dash_table.DataTable(
+156:                             id='events-table',
+157:                             style_table={'height': '300px', 'overflowY': 'auto'},
+158:                             style_cell={'backgroundColor': '#111827', 'color': '#e2e8f0', 'border': '1px solid #1e293b', 'textAlign': 'left', 'padding': '10px'},
+159:                             style_header={'backgroundColor': '#0f172a', 'fontWeight': 'bold', 'color': '#00d2ff', 'border': '1px solid #1e293b'}
+160:                         )
+161:                     ])
+162:                 ])
+163:             ], width=12)
+164:         ], className="mt-3")
+165:     ]),
+166:     
+167:     dbc.Tab(label="Network Surface", tab_id="tab-2", children=[
+168:         dbc.Row([
+169:             dbc.Col([
+170:                 dbc.Card([
+171:                     dbc.CardHeader("Active Directory & Topology Map"),
+172:                     dbc.CardBody([
+173:                         html.P("Visualizing known nodes based on Layer 1 Digital Twin.", style={'color': '#94a3b8'}),
+174:                         dcc.Graph(id="network-graph", style={'height': '600px'})
+175:                     ])
+176:                 ])
+177:             ])
+178:         ], className="mt-3")
+179:     ]),
+180:     
+181:     dbc.Tab(label="Tri-Brain Engine", tab_id="tab-3", children=[
+182:         dbc.Row([
+183:             dbc.Col(dbc.Card([
+184:                 dbc.CardHeader("1. SIGMA Engine", style={'color': '#8b5cf6'}),
+185:                 dbc.CardBody([html.H4("Status: Active"), html.P(id="sigma-stats")])
+186:             ])),
+187:             dbc.Col(dbc.Card([
+188:                 dbc.CardHeader("2. GNN Anomaly", style={'color': '#0ea5e9'}),
+189:                 dbc.CardBody([html.H4("Status: Tracking"), html.P(id="gnn-stats")])
+190:             ])),
+191:             dbc.Col(dbc.Card([
+192:                 dbc.CardHeader("3. LLM Debate", style={'color': '#f59e0b'}),
+193:                 dbc.CardBody([html.H4("Status: Ready"), html.P("Avg Confidence: 89%")])
+194:             ]))
+195:         ], className="mt-3")
+196:     ]),
+197:     
+198:     dbc.Tab(label="Evolution Engine", tab_id="tab-4", children=[
+199:         dbc.Row([
+200:             dbc.Col(dbc.Card([
+201:                 dbc.CardHeader("Recent Gaps Identified"),
+202:                 dbc.CardBody(html.Div(id="gaps-table"))
+203:             ]), width=6),
+204:             dbc.Col(dbc.Card([
+205:                 dbc.CardHeader("Model Loss Curve"),
+206:                 dbc.CardBody(dcc.Graph(id="training-loss", style={'height': '300px'}))
+207:             ]), width=6)
+208:         ], className="mt-3")
+209:     ]),
+210:     
+211:     dbc.Tab(label="Research & Exports", tab_id="tab-5", children=[
+212:         dbc.Row([
+213:             dbc.Col(dbc.Card([
+214:                 dbc.CardHeader("Export Campaign Artifacts"),
+215:                 dbc.CardBody([
+216:                     html.P("Download generated artifacts from the current simulation run."),
+217:                     dbc.Button("📥 STIX 2.1 Bundle", color="info", className="me-2"),
+218:                     dbc.Button("📥 CSV Dataset", color="info", className="me-2"),
+219:                     dbc.Button("📥 Markdown Report", color="info", className="me-2"),
+220:                 ])
+221:             ]))
+222:         ], className="mt-3")
+223:     ]),
+224: ], id="tabs", active_tab="tab-1")
+225: 
+226: app.layout = dbc.Container([
+227:     dcc.Interval(id='interval-component', interval=5000, n_intervals=0),
+228:     dbc.Row([
+229:         dbc.Col(sidebar, width=2, style={'padding': 0}),
+230:         dbc.Col([
+231:             header,
+232:             html.Div([kpi_row, tabs], style={'padding': '20px'})
+233:         ], width=10, style={'padding': 0, 'backgroundColor': '#070b14', 'height': '100vh', 'overflowY': 'auto'})
+234:     ])
+235: ], fluid=True, style={'padding': 0})
+236: 
+237: # --- CALLBACKS ---
+238: @app.callback(
+239:     Output("provider-warning", "children"),
+240:     Input("provider-select", "value")
+241: )
+242: def update_warning(provider):
+243:     if provider == "mock":
+244:         return dbc.Alert("⚠️ Mock Mode Active. No API requests will be made.", color="warning", style={'padding': '5px', 'fontSize': '0.8rem'})
+245:     elif provider == "gemini":
+246:         return dbc.Alert("✅ API Status: Connected (Key Hidden)", color="success", style={'padding': '5px', 'fontSize': '0.8rem'})
+247:     return html.Div("Engine: Local LLM Processing", style={'color': '#94a3b8'})
+248: 
+249: @app.callback(
+250:     [Output("kpi-detection", "children"),
+251:      Output("kpi-defense", "children"),
+252:      Output("kpi-attackers", "children"),
+253:      Output("kpi-rules", "children"),
+254:      Output("kpi-gnn", "children"),
+255:      Output("kpi-events", "children"),
+256:      Output("live-status", "children"),
+257:      Output("elo-timeline", "figure"),
+258:      Output("leaderboard-table", "children"),
+259:      Output("events-table", "data"),
+260:      Output("events-table", "columns"),
+261:      Output("network-graph", "figure"),
+262:      Output("sigma-stats", "children"),
+263:      Output("gnn-stats", "children"),
+264:      Output("gaps-table", "children"),
+265:      Output("training-loss", "figure")],
+266:     [Input("interval-component", "n_intervals")]
+267: )
+268: def update_dashboard(n):
+269:     # Load Data
+270:     df_elo = load_data(DB_ELO, "SELECT * FROM elo_history ORDER BY timestamp")
+271:     df_events = load_data(DB_RESULTS, "SELECT * FROM simulation_results ORDER BY id DESC")
+272:     df_gaps = load_data(DB_GAPS, "SELECT * FROM gap_analysis ORDER BY timestamp DESC")
+273:     df_training = load_data(DB_TRAINING, "SELECT * FROM training_history ORDER BY timestamp DESC")
+274: 
+275:     # KPIs
+276:     total_events = len(df_events)
+277:     defense_actions = len(df_events[df_events['event_type'] == 'defense_action']) if not df_events.empty else 0
+278:     detection_rate = f"{(defense_actions/total_events)*100:.1f}%" if total_events > 0 else "0%"
+279:     active_attackers = df_elo['agent_id'].nunique() - 1 if not df_elo.empty and df_elo['agent_id'].nunique() > 1 else 0
+280:     rules_gen = len(df_gaps)
+281:     gnn_updates = len(df_training)
+282: 
+283:     # Status Header
+284:     sim_id = df_events['sim_id'].iloc[0][:8] if not df_events.empty else "N/A"
+285:     current_time = datetime.now().strftime('%H:%M:%S')
+286:     status_html = [
+287:         html.Span("● RUNNING", className="status-badge", style={'marginRight': '15px'}),
+288:         html.Span(f"Campaign: ", style={'color': '#94a3b8'}),
+289:         html.Span(f"{sim_id}", style={'color': '#e2e8f0', 'fontFamily': 'monospace', 'marginRight': '15px'}),
+290:         html.Span(f"Updated: ", style={'color': '#94a3b8'}),
+291:         html.Span(f"{current_time}", style={'color': '#e2e8f0'})
+292:     ]
+293: 
+294:     # ELO Chart
+295:     if df_elo.empty:
+296:         fig_elo = go.Figure().update_layout(plot_bgcolor='#070b14', paper_bgcolor='#070b14')
+297:         fig_elo.add_annotation(text="No Data", showarrow=False, font=dict(color="#94a3b8"))
+298:         leaderboard = html.Div("No Data", style={'color': '#94a3b8'})
+299:     else:
+300:         fig_elo = px.line(df_elo, x='timestamp', y='rating', color='agent_id', markers=True, color_discrete_sequence=px.colors.qualitative.Set1)
+301:         fig_elo.update_layout(
+302:             plot_bgcolor='#070b14', paper_bgcolor='#070b14', font_color='#e2e8f0',
+303:             margin=dict(l=0, r=0, t=10, b=0),
+304:             xaxis=dict(showgrid=True, gridcolor='#1e293b', title=""),
+305:             yaxis=dict(showgrid=True, gridcolor='#1e293b', title="ELO Rating"),
+306:             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+307:         )
+308:         
+309:         latest_elo = df_elo.sort_values('timestamp', ascending=False).drop_duplicates('agent_id').sort_values('rating', ascending=False)
+310:         leaderboard = dbc.Table.from_dataframe(latest_elo[['agent_id', 'rating']], striped=True, bordered=False, hover=True, color="dark", style={'backgroundColor': '#111827', 'color': '#e2e8f0'})
+311: 
+312:     # Events Table
+313:     if df_events.empty:
+314:         events_data, events_cols = [], []
+315:     else:
+316:         display_df = df_events.head(50)[['timestamp', 'round_num', 'event_type', 'data']]
+317:         events_data = display_df.to_dict('records')
+318:         events_cols = [{"name": i.replace("_", " ").title(), "id": i} for i in display_df.columns]
+319: 
+320:     # Network Graph (Mocked visual representation using NetworkX)
+321:     G = nx.barabasi_albert_graph(25, 2)
+322:     pos = nx.spring_layout(G, seed=42)
+323:     edge_x, edge_y, node_x, node_y = [], [], [], []
+324:     
+325:     for edge in G.edges():
+326:         x0, y0 = pos[edge[0]]; x1, y1 = pos[edge[1]]
+327:         edge_x.extend([x0, x1, None]); edge_y.extend([y0, y1, None])
+328:     
+329:     for node in G.nodes():
+330:         x, y = pos[node]
+331:         node_x.append(x); node_y.append(y)
+332:         
+333:     node_colors = ['#ef4444' if i % 6 == 0 else ('#f59e0b' if i % 7 == 0 else '#00d2ff') for i in range(len(G.nodes()))]
+334:     
+335:     fig_net = go.Figure(data=[
+336:         go.Scatter(x=edge_x, y=edge_y, line=dict(width=1, color='#334155'), hoverinfo='none', mode='lines'),
+337:         go.Scatter(x=node_x, y=node_y, mode='markers', hoverinfo='text', text=[f"Host {i}" for i in range(25)],
+338:                    marker=dict(showscale=False, color=node_colors, size=15, line_width=1, line_color='#0f172a'))
+339:     ])
+340:     fig_net.update_layout(
+341:         showlegend=False, hovermode='closest', margin=dict(b=0,l=0,r=0,t=0),
+342:         plot_bgcolor='#070b14', paper_bgcolor='#070b14',
+343:         xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+344:         yaxis=dict(showgrid=False, zeroline=False, showticklabels=False)
+345:     )
+346: 
+347:     # Tri-Brain Stats
+348:     sigma_txt = f"Rules Loaded: 154 | Alerts Triggered: {defense_actions}"
+349:     gnn_txt = f"Epochs: {gnn_updates * 50} | Loss: {df_training['loss'].iloc[0] if not df_training.empty else '0.00'}"
+350:     
+351:     # Evolution Engine
+352:     if df_gaps.empty:
+353:         gaps_tbl = html.Div("No gaps identified.", style={'color': '#94a3b8'})
+354:     else:
+355:         gaps_tbl = dbc.Table.from_dataframe(df_gaps[['timestamp', 'missed_technique']].head(10), striped=True, bordered=False, hover=True, color="dark", style={'backgroundColor': '#111827', 'color': '#e2e8f0'})
+356:         
+357:     if df_training.empty:
+358:         fig_loss = go.Figure().update_layout(plot_bgcolor='#070b14', paper_bgcolor='#070b14')
+359:     else:
+360:         fig_loss = px.line(df_training, x='timestamp', y='loss', template='plotly_dark')
+361:         fig_loss.update_layout(plot_bgcolor='#070b14', paper_bgcolor='#070b14', margin=dict(l=0, r=0, t=10, b=0), xaxis_title="", yaxis_title="Loss")
+362: 
+363:     return (
+364:         detection_rate, str(defense_actions), str(active_attackers), str(rules_gen), str(gnn_updates), str(total_events),
+365:         status_html, fig_elo, leaderboard, events_data, events_cols, fig_net,
+366:         sigma_txt, gnn_txt, gaps_tbl, fig_loss
+367:     )
+368: 
+369: if __name__ == '__main__':
+370:     app.run(debug=False, port=8050)
+371: 
+The above content shows the entire, complete file contents of the requested file.

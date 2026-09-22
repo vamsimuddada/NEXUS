@@ -1,0 +1,442 @@
+{
+    "type": "bundle",
+    "id": "bundle--fb56be04-2239-47a4-82a0-a2f13f4559b2",
+    "objects": [
+        {
+            "type": "identity",
+            "spec_version": "2.1",
+            "id": "identity--a31b8d56-799d-4dd8-bfb2-18cc90de2c0c",
+            "created": "2026-09-12T10:14:14.790366Z",
+            "modified": "2026-09-12T10:14:14.790366Z",
+            "name": "NEXUS Autonomous SOC",
+            "description": "NEXUS autonomous cybersecurity simulation platform.",
+            "identity_class": "system"
+        },
+        {
+            "type": "campaign",
+            "spec_version": "2.1",
+            "id": "campaign--5cd63c7e-dc6b-4657-8997-48c530ecdb3e",
+            "created": "2026-09-12T10:14:14.790665Z",
+            "modified": "2026-09-12T10:14:14.790665Z",
+            "name": "NEXUS Campaign 8ca3d76c",
+            "description": "2 battles. F1 range: 0.600\u20130.857. SIGMA rules: 10\u219211. NOVA peak evasion: 100.0%.",
+            "first_seen": "2026-09-12T10:14:13.902121Z",
+            "last_seen": "2026-09-12T10:14:14.790659Z",
+            "objective": "Adversarial co-evolution research simulation"
+        },
+        {
+            "type": "threat-actor",
+            "spec_version": "2.1",
+            "id": "threat-actor--beb5be96-d5f8-4c1e-b40e-340956831c44",
+            "created": "2026-09-12T10:14:14.790819Z",
+            "modified": "2026-09-12T10:14:14.790819Z",
+            "name": "NOVA",
+            "description": "AI-native adversarial ML attacker. Probes and evades detection systems.",
+            "threat_actor_types": [
+                "unknown"
+            ],
+            "aliases": [
+                "NOVA-AI"
+            ],
+            "sophistication": "expert"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--75bd7302-bacf-4b81-b578-5866276ea68d",
+            "created": "2026-09-12T10:14:14.791268Z",
+            "modified": "2026-09-12T10:14:14.791268Z",
+            "relationship_type": "attributed-to",
+            "source_ref": "campaign--5cd63c7e-dc6b-4657-8997-48c530ecdb3e",
+            "target_ref": "threat-actor--beb5be96-d5f8-4c1e-b40e-340956831c44"
+        },
+        {
+            "type": "threat-actor",
+            "spec_version": "2.1",
+            "id": "threat-actor--a998c127-a76d-4e48-ba88-920d71d955c7",
+            "created": "2026-09-12T10:14:14.791419Z",
+            "modified": "2026-09-12T10:14:14.791419Z",
+            "name": "VIPER",
+            "description": "Nation-state APT operator. Patient, low-and-slow, living-off-the-land.",
+            "threat_actor_types": [
+                "nation-state"
+            ],
+            "aliases": [
+                "APT-VIPER"
+            ],
+            "sophistication": "expert"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--2ee27a1f-ae62-4d54-8b65-851ee469a389",
+            "created": "2026-09-12T10:14:14.79155Z",
+            "modified": "2026-09-12T10:14:14.79155Z",
+            "relationship_type": "attributed-to",
+            "source_ref": "campaign--5cd63c7e-dc6b-4657-8997-48c530ecdb3e",
+            "target_ref": "threat-actor--a998c127-a76d-4e48-ba88-920d71d955c7"
+        },
+        {
+            "type": "threat-actor",
+            "spec_version": "2.1",
+            "id": "threat-actor--43c99eef-a517-4a5a-aa86-35ae9687c9f9",
+            "created": "2026-09-12T10:14:14.791677Z",
+            "modified": "2026-09-12T10:14:14.791677Z",
+            "name": "CIPHER",
+            "description": "Criminal initial-access broker. Specialises in credential theft and access sales.",
+            "threat_actor_types": [
+                "unknown"
+            ],
+            "aliases": [
+                "CIPHER-BROKER"
+            ],
+            "sophistication": "intermediate"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--6f91cd9f-15b7-4569-a09d-a9277ad1e94f",
+            "created": "2026-09-12T10:14:14.791799Z",
+            "modified": "2026-09-12T10:14:14.791799Z",
+            "relationship_type": "attributed-to",
+            "source_ref": "campaign--5cd63c7e-dc6b-4657-8997-48c530ecdb3e",
+            "target_ref": "threat-actor--43c99eef-a517-4a5a-aa86-35ae9687c9f9"
+        },
+        {
+            "type": "threat-actor",
+            "spec_version": "2.1",
+            "id": "threat-actor--37220db5-0158-43ec-89b6-ceca06b628c4",
+            "created": "2026-09-12T10:14:14.791911Z",
+            "modified": "2026-09-12T10:14:14.791911Z",
+            "name": "KRAKEN",
+            "description": "Ransomware syndicate operator. Fast, aggressive, double-extortion.",
+            "threat_actor_types": [
+                "crime-syndicate"
+            ],
+            "aliases": [
+                "KRAKEN-SYNDICTE"
+            ],
+            "sophistication": "intermediate"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--9d9b95b0-89dd-45fc-8e17-e48114d0d804",
+            "created": "2026-09-12T10:14:14.79203Z",
+            "modified": "2026-09-12T10:14:14.79203Z",
+            "relationship_type": "attributed-to",
+            "source_ref": "campaign--5cd63c7e-dc6b-4657-8997-48c530ecdb3e",
+            "target_ref": "threat-actor--37220db5-0158-43ec-89b6-ceca06b628c4"
+        },
+        {
+            "type": "threat-actor",
+            "spec_version": "2.1",
+            "id": "threat-actor--79071e1f-1920-4831-9b2b-10b95d24f340",
+            "created": "2026-09-12T10:14:14.792141Z",
+            "modified": "2026-09-12T10:14:14.792141Z",
+            "name": "GHOST",
+            "description": "Disgruntled insider threat. Env-aware, credential abuser.",
+            "threat_actor_types": [
+                "insider-threat"
+            ],
+            "aliases": [
+                "INSIDER-GHOST"
+            ],
+            "sophistication": "novice"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--9dc3fbcd-5213-497f-9223-f38168f69c2a",
+            "created": "2026-09-12T10:14:14.792284Z",
+            "modified": "2026-09-12T10:14:14.792284Z",
+            "relationship_type": "attributed-to",
+            "source_ref": "campaign--5cd63c7e-dc6b-4657-8997-48c530ecdb3e",
+            "target_ref": "threat-actor--79071e1f-1920-4831-9b2b-10b95d24f340"
+        },
+        {
+            "type": "threat-actor",
+            "spec_version": "2.1",
+            "id": "threat-actor--7b7bc4d3-50d1-4155-abc7-e77cd62beb7d",
+            "created": "2026-09-12T10:14:14.792398Z",
+            "modified": "2026-09-12T10:14:14.792398Z",
+            "name": "HYDRA",
+            "description": "Hacktivist collective. Chaotic, disruptive, defacement-focused.",
+            "threat_actor_types": [
+                "activist"
+            ],
+            "aliases": [
+                "HYDRA-COLLECTIVE"
+            ],
+            "sophistication": "novice"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--bc4eeea5-7637-4762-bf65-80bbd0951beb",
+            "created": "2026-09-12T10:14:14.792519Z",
+            "modified": "2026-09-12T10:14:14.792519Z",
+            "relationship_type": "attributed-to",
+            "source_ref": "campaign--5cd63c7e-dc6b-4657-8997-48c530ecdb3e",
+            "target_ref": "threat-actor--7b7bc4d3-50d1-4155-abc7-e77cd62beb7d"
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--9350343e-518d-4fb8-910d-ea222af6957a",
+            "created": "2026-09-12T10:14:14.792701Z",
+            "modified": "2026-09-12T10:14:14.792701Z",
+            "name": "Valid Accounts",
+            "description": "MITRE ATT&CK technique T1078",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/techniques/T1078/",
+                    "external_id": "T1078"
+                }
+            ]
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--1417cb2e-1dc4-49fa-9e32-f6f35c9130cd",
+            "created_by_ref": "identity--a31b8d56-799d-4dd8-bfb2-18cc90de2c0c",
+            "created": "2026-09-12T10:14:14.792907Z",
+            "modified": "2026-09-12T10:14:14.792907Z",
+            "name": "Technique Effectiveness: T1078",
+            "description": "Technique T1078 used 9 times. Evasion rate: 55.6%. Detection rate: 44.4%.",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[process:command_line MATCHES 'T1078']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2026-09-12T10:14:13.902121Z"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--15377865-a962-48fc-87e4-84419a0b3006",
+            "created": "2026-09-12T10:14:14.793566Z",
+            "modified": "2026-09-12T10:14:14.793566Z",
+            "relationship_type": "indicates",
+            "source_ref": "indicator--1417cb2e-1dc4-49fa-9e32-f6f35c9130cd",
+            "target_ref": "attack-pattern--9350343e-518d-4fb8-910d-ea222af6957a"
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--be912263-17f1-4004-87d1-69df21300ea8",
+            "created": "2026-09-12T10:14:14.793762Z",
+            "modified": "2026-09-12T10:14:14.793762Z",
+            "name": "OS Credential Dumping",
+            "description": "MITRE ATT&CK technique T1003",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/techniques/T1003/",
+                    "external_id": "T1003"
+                }
+            ]
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--7b370ea0-f537-4bfc-bdc2-6eb7da18e4a0",
+            "created_by_ref": "identity--a31b8d56-799d-4dd8-bfb2-18cc90de2c0c",
+            "created": "2026-09-12T10:14:14.793897Z",
+            "modified": "2026-09-12T10:14:14.793897Z",
+            "name": "Technique Effectiveness: T1003",
+            "description": "Technique T1003 used 2 times. Evasion rate: 50.0%. Detection rate: 50.0%.",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[process:command_line MATCHES 'T1003']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2026-09-12T10:14:13.902121Z"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--33ccb3af-b3e2-4848-bd3f-3ea68def053b",
+            "created": "2026-09-12T10:14:14.79431Z",
+            "modified": "2026-09-12T10:14:14.79431Z",
+            "relationship_type": "indicates",
+            "source_ref": "indicator--7b370ea0-f537-4bfc-bdc2-6eb7da18e4a0",
+            "target_ref": "attack-pattern--be912263-17f1-4004-87d1-69df21300ea8"
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--7019f525-8cd8-4eab-bdb5-e5b152224515",
+            "created": "2026-09-12T10:14:14.794498Z",
+            "modified": "2026-09-12T10:14:14.794498Z",
+            "name": "Application Layer Protocol",
+            "description": "MITRE ATT&CK technique T1071",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/techniques/T1071/",
+                    "external_id": "T1071"
+                }
+            ]
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--8af5c201-11bc-4c78-8f6b-f661dc46ad84",
+            "created_by_ref": "identity--a31b8d56-799d-4dd8-bfb2-18cc90de2c0c",
+            "created": "2026-09-12T10:14:14.794631Z",
+            "modified": "2026-09-12T10:14:14.794631Z",
+            "name": "Technique Effectiveness: T1071",
+            "description": "Technique T1071 used 5 times. Evasion rate: 40.0%. Detection rate: 60.0%.",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[process:command_line MATCHES 'T1071']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2026-09-12T10:14:13.902121Z"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--1d013fd1-01ab-48a3-aa15-1c4ef4a1e90b",
+            "created": "2026-09-12T10:14:14.795199Z",
+            "modified": "2026-09-12T10:14:14.795199Z",
+            "relationship_type": "indicates",
+            "source_ref": "indicator--8af5c201-11bc-4c78-8f6b-f661dc46ad84",
+            "target_ref": "attack-pattern--7019f525-8cd8-4eab-bdb5-e5b152224515"
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--2650f4c2-4a92-4a7b-b46c-16928b7dea11",
+            "created": "2026-09-12T10:14:14.795408Z",
+            "modified": "2026-09-12T10:14:14.795408Z",
+            "name": "Command and Scripting Interpreter",
+            "description": "MITRE ATT&CK technique T1059",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/techniques/T1059/",
+                    "external_id": "T1059"
+                }
+            ]
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--93e34b5f-648f-4d0d-bb4f-972b5c69f6ac",
+            "created_by_ref": "identity--a31b8d56-799d-4dd8-bfb2-18cc90de2c0c",
+            "created": "2026-09-12T10:14:14.795539Z",
+            "modified": "2026-09-12T10:14:14.795539Z",
+            "name": "Technique Effectiveness: T1059",
+            "description": "Technique T1059 used 5 times. Evasion rate: 20.0%. Detection rate: 80.0%.",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[process:command_line MATCHES 'T1059']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2026-09-12T10:14:13.902121Z"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--014e3bb8-8d53-4bd3-89ad-ed0a0d71e7be",
+            "created": "2026-09-12T10:14:14.795929Z",
+            "modified": "2026-09-12T10:14:14.795929Z",
+            "relationship_type": "indicates",
+            "source_ref": "indicator--93e34b5f-648f-4d0d-bb4f-972b5c69f6ac",
+            "target_ref": "attack-pattern--2650f4c2-4a92-4a7b-b46c-16928b7dea11"
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--75f1043a-6be1-4c14-8c4c-46d6ae273aa6",
+            "created": "2026-09-12T10:14:14.796118Z",
+            "modified": "2026-09-12T10:14:14.796118Z",
+            "name": "File and Directory Discovery",
+            "description": "MITRE ATT&CK technique T1083",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/techniques/T1083/",
+                    "external_id": "T1083"
+                }
+            ]
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--105f7029-944d-4b48-8b28-f80bcba97ac8",
+            "created_by_ref": "identity--a31b8d56-799d-4dd8-bfb2-18cc90de2c0c",
+            "created": "2026-09-12T10:14:14.796266Z",
+            "modified": "2026-09-12T10:14:14.796266Z",
+            "name": "Technique Effectiveness: T1083",
+            "description": "Technique T1083 used 2 times. Evasion rate: 0.0%. Detection rate: 100.0%.",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[process:command_line MATCHES 'T1083']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2026-09-12T10:14:13.902121Z"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--e5e2aeb3-16b4-420d-913e-027ebefa7c53",
+            "created": "2026-09-12T10:14:14.796653Z",
+            "modified": "2026-09-12T10:14:14.796653Z",
+            "relationship_type": "indicates",
+            "source_ref": "indicator--105f7029-944d-4b48-8b28-f80bcba97ac8",
+            "target_ref": "attack-pattern--75f1043a-6be1-4c14-8c4c-46d6ae273aa6"
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--9394822b-e9d6-4e7d-8966-52772547e4b6",
+            "created": "2026-09-12T10:14:14.796879Z",
+            "modified": "2026-09-12T10:14:14.796879Z",
+            "name": "Remote Services",
+            "description": "MITRE ATT&CK technique T1021",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/techniques/T1021/",
+                    "external_id": "T1021"
+                }
+            ]
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--b5ca5abf-b986-446f-a370-51a016fab577",
+            "created_by_ref": "identity--a31b8d56-799d-4dd8-bfb2-18cc90de2c0c",
+            "created": "2026-09-12T10:14:14.797013Z",
+            "modified": "2026-09-12T10:14:14.797013Z",
+            "name": "Technique Effectiveness: T1021",
+            "description": "Technique T1021 used 1 times. Evasion rate: 0.0%. Detection rate: 100.0%.",
+            "indicator_types": [
+                "malicious-activity"
+            ],
+            "pattern": "[process:command_line MATCHES 'T1021']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2026-09-12T10:14:13.902121Z"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--44bff198-349f-4d3b-98a2-2e0735e60940",
+            "created": "2026-09-12T10:14:14.797422Z",
+            "modified": "2026-09-12T10:14:14.797422Z",
+            "relationship_type": "indicates",
+            "source_ref": "indicator--b5ca5abf-b986-446f-a370-51a016fab577",
+            "target_ref": "attack-pattern--9394822b-e9d6-4e7d-8966-52772547e4b6"
+        }
+    ]
+}

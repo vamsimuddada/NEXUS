@@ -1,0 +1,4 @@
+event_id,is_admin,src_is_dc,dst_is_dc,dept_code,stealth_num,sigma_fired,sigma_count,gnn_score,gnn_flagged,llm_verdict_num,llm_confidence,ensemble_confidence,label,attack_technique,attacker,true_label_num,battle_id
+0,0,0,0,-1,1,1,1,0.5,1,2,0.7,0.616,1,,,1,8693326d
+0,0,0,0,-1,1,1,1,0.5,1,2,0.7,0.616,1,,,1,aa12a0e6
+0,0,0,0,-1,1,1,1,0.5,1,2,0.7,0.616,1,,,1,7cacc223

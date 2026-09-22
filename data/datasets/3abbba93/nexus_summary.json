@@ -1,0 +1,21 @@
+{
+  "total_rows": 4,
+  "malicious": 2,
+  "benign": 2,
+  "class_balance": 0.5,
+  "battles_included": 2,
+  "technique_distribution": {
+    "T1078": 2
+  },
+  "attacker_distribution": {
+    "VIPER": 2
+  },
+  "gnn_score_stats": {
+    "mean": 0.55,
+    "stdev": 0.1963,
+    "min": 0.38,
+    "max": 0.72
+  },
+  "avg_sigma_alerts_per_detection": 1,
+  "generated_at": "2026-09-13T06:21:48.379332+00:00"
+}

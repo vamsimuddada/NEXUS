@@ -1,0 +1,4 @@
+# Optional semantic-search backend for PsychologyMemory.
+# The main requirements.txt intentionally does not install this on platforms
+# where ChromaDB's native dependencies may not have compatible wheels.
+chromadb>=0.4.0

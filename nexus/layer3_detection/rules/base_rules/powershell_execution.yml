@@ -1,0 +1,15 @@
+title: Suspicious PowerShell Execution
+id: 7g8h9i0j-1k2l-3m4n-5o6p-7q8r9s0t1u2v
+status: experimental
+description: Suspicious PowerShell commands
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        event_id: 4688
+        details|contains: 'powershell'
+    condition: selection
+level: medium
+tags:
+    - attack.t1059.001

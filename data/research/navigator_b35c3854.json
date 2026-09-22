@@ -1,0 +1,193 @@
+{
+  "name": "NEXUS Campaign b35c3854",
+  "versions": {
+    "attack": "14",
+    "navigator": "4.9",
+    "layer": "4.5"
+  },
+  "domain": "enterprise-attack",
+  "description": "NEXUS co-evolution simulation results \u2014 campaign b35c3854",
+  "filters": {
+    "platforms": [
+      "Windows"
+    ]
+  },
+  "sorting": 3,
+  "layout": {
+    "layout": "side",
+    "showID": true,
+    "showName": true
+  },
+  "hideDisabled": false,
+  "techniques": [
+    {
+      "techniqueID": "T1078",
+      "tactic": "initial-access",
+      "score": 42,
+      "color": "#6a0000",
+      "comment": "Uses: 2749 | Evasion: 41.7% | Detection: 58.3%",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Attacker",
+          "value": "mixed"
+        },
+        {
+          "name": "NEXUS campaign",
+          "value": "b35c3854"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1071",
+      "tactic": "command-and-control",
+      "score": 32,
+      "color": "#520000",
+      "comment": "Uses: 1914 | Evasion: 32.4% | Detection: 67.6%",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Attacker",
+          "value": "mixed"
+        },
+        {
+          "name": "NEXUS campaign",
+          "value": "b35c3854"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1003",
+      "tactic": "credential-access",
+      "score": 27,
+      "color": "#0000ff",
+      "comment": "Uses: 995 | Evasion: 26.8% | Detection: 73.2%",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Attacker",
+          "value": "mixed"
+        },
+        {
+          "name": "NEXUS campaign",
+          "value": "b35c3854"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1083",
+      "tactic": "discovery",
+      "score": 13,
+      "color": "#0000ff",
+      "comment": "Uses: 1276 | Evasion: 12.8% | Detection: 87.2%",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Attacker",
+          "value": "mixed"
+        },
+        {
+          "name": "NEXUS campaign",
+          "value": "b35c3854"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1059",
+      "tactic": "execution",
+      "score": 11,
+      "color": "#0000ff",
+      "comment": "Uses: 1505 | Evasion: 10.9% | Detection: 89.1%",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Attacker",
+          "value": "mixed"
+        },
+        {
+          "name": "NEXUS campaign",
+          "value": "b35c3854"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1486",
+      "tactic": "impact",
+      "score": 2,
+      "color": "#0000ff",
+      "comment": "Uses: 378 | Evasion: 1.6% | Detection: 98.4%",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Attacker",
+          "value": "mixed"
+        },
+        {
+          "name": "NEXUS campaign",
+          "value": "b35c3854"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1055",
+      "tactic": "defense-evasion",
+      "score": 1,
+      "color": "#0000ff",
+      "comment": "Uses: 71 | Evasion: 1.4% | Detection: 98.6%",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Attacker",
+          "value": "mixed"
+        },
+        {
+          "name": "NEXUS campaign",
+          "value": "b35c3854"
+        }
+      ]
+    },
+    {
+      "techniqueID": "T1021",
+      "tactic": "lateral-movement",
+      "score": 1,
+      "color": "#0000ff",
+      "comment": "Uses: 724 | Evasion: 0.8% | Detection: 99.2%",
+      "enabled": true,
+      "metadata": [
+        {
+          "name": "Attacker",
+          "value": "mixed"
+        },
+        {
+          "name": "NEXUS campaign",
+          "value": "b35c3854"
+        }
+      ]
+    }
+  ],
+  "gradient": {
+    "colors": [
+      "#ff0000",
+      "#ffffff",
+      "#0000ff"
+    ],
+    "minValue": 0,
+    "maxValue": 100
+  },
+  "legendItems": [
+    {
+      "label": "High evasion (attacker winning)",
+      "color": "#ff0000"
+    },
+    {
+      "label": "High detection (defender winning)",
+      "color": "#0000ff"
+    }
+  ],
+  "metadata": [
+    {
+      "name": "generated_by",
+      "value": "NEXUS"
+    }
+  ]
+}

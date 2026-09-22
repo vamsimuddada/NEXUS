@@ -1,0 +1,5 @@
+event_id,is_admin,src_is_dc,dst_is_dc,dept_code,stealth_num,sigma_fired,sigma_count,gnn_score,gnn_flagged,llm_verdict_num,llm_confidence,ensemble_confidence,label,attack_technique,attacker,true_label_num,battle_id
+4662,1,0,0,0,1,1,1,0.72,1,2,1.0,0.875,1,T1078,VIPER,1,ff7da3cb
+4624,0,0,0,0,1,0,0,0.38,0,0,1.0,0.875,0,,,0,ff7da3cb
+4662,1,0,0,0,1,1,1,0.72,1,2,0.75,0.625,1,T1078,VIPER,1,5a083cce
+4624,0,0,0,0,1,0,0,0.38,0,0,0.75,0.625,0,,,0,5a083cce

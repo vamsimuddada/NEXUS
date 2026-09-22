@@ -1,0 +1,74 @@
+{
+  "NOVA": {
+    "technique_count": 1,
+    "tactic_sequence": [
+      "command-and-control"
+    ],
+    "covered_phases": [
+      "command-and-control"
+    ],
+    "violations": [],
+    "is_plausible": true,
+    "completeness": 0.07
+  },
+  "VIPER": {
+    "technique_count": 1,
+    "tactic_sequence": [
+      "initial-access"
+    ],
+    "covered_phases": [
+      "initial-access"
+    ],
+    "violations": [],
+    "is_plausible": true,
+    "completeness": 0.07
+  },
+  "CIPHER": {
+    "technique_count": 1,
+    "tactic_sequence": [
+      "initial-access"
+    ],
+    "covered_phases": [
+      "initial-access"
+    ],
+    "violations": [],
+    "is_plausible": true,
+    "completeness": 0.07
+  },
+  "GHOST": {
+    "technique_count": 1,
+    "tactic_sequence": [
+      "initial-access"
+    ],
+    "covered_phases": [
+      "initial-access"
+    ],
+    "violations": [],
+    "is_plausible": true,
+    "completeness": 0.07
+  },
+  "KRAKEN": {
+    "technique_count": 1,
+    "tactic_sequence": [
+      "execution"
+    ],
+    "covered_phases": [
+      "execution"
+    ],
+    "violations": [],
+    "is_plausible": true,
+    "completeness": 0.07
+  },
+  "HYDRA": {
+    "technique_count": 1,
+    "tactic_sequence": [
+      "impact"
+    ],
+    "covered_phases": [
+      "impact"
+    ],
+    "violations": [],
+    "is_plausible": true,
+    "completeness": 0.07
+  }
+}

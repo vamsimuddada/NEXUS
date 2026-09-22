@@ -1,0 +1,28 @@
+# NEXUS Global Settings
+simulation:
+  default_num_employees: 100
+  default_num_subnets: 5
+  max_simulation_steps: 1000
+  tick_interval_seconds: 1
+  base_directory: "data/simulations"
+
+ollama:
+  host: "http://localhost:11434"
+  timeout_seconds: 60
+  retry_attempts: 3
+  models:
+    attacker: "llama3"
+    debate: "mistral"
+    rules: "llama3"
+    embedding: "all-MiniLM-L6-v2"
+
+database:
+  sqlite_path: "data/nexus.db"
+  chroma_path: "data/chromadb"
+  echo_sql: false
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/nexus.log"
+  console_output: true

@@ -1,0 +1,14 @@
+title: Account Creation
+id: 9i0j1k2l-3m4n-5o6p-7q8r-9s0t1u2v3w4x
+status: experimental
+description: New account created
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        event_id: 4720
+    condition: selection
+level: low
+tags:
+    - attack.t1136

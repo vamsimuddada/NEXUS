@@ -1,0 +1,15 @@
+title: Suspicious Service
+id: 3c4d5e6f-7g8h-9i0j-1k2l-3m4n5o6p7q8r
+status: experimental
+description: New service installed from unusual path
+logsource:
+    product: windows
+    service: system
+detection:
+    selection:
+        event_id: 7045
+        details|contains: 'temp'
+    condition: selection
+level: medium
+tags:
+    - attack.t1543

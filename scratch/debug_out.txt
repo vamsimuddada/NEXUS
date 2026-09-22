@@ -1,6 +1,0 @@
-15: import plotly.graph_objects as go
-143: /* ── Feed box ─────────────────────────────────────────────────────────── */
-144: .feed-box {
-156: .feed-box .battle-line  { color: #f59e0b; font-weight: 600; }
-157: .feed-box .attack-line  { color: #e2e8f0; }
-158: .feed-box .detect-line  { color: #10b981; }

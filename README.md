@@ -1,72 +1,61 @@
-# NEXUS — Autonomous Cyber Warfare Simulation & Self-Evolving SOC Platform
-> Neural Exploitation & eXplainable Unified Security
+<div align="center">
+  <img src="assets/images/nexus_logo.png" alt="NEXUS Logo" width="200"/>
+  <h1>NEXUS</h1>
+  <p><b>Advanced Autonomous Cyber Warfare & Threat Intelligence Platform</b></p>
+  
+  [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+  [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+  [![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)](https://streamlit.io)
+</div>
 
-## Architecture Overview
+<br/>
 
-```
-NEXUS
-├── Layer 1 — Digital Twin Environment     (core/)
-├── Layer 2 — Attacker War Council         (attackers/)
-├── Layer 3 — Tri-Brain Detection Ensemble (defender/)
-├── Layer 4 — Cognitive Evolution Engine   (evolution/)
-├── Layer 5 — Autonomous SOAR/Counterstrike(soar/)
-├── Layer 6 — War Score & Gamification     (scoring/)
-└── Layer 7 — Research Output Engine       (research/)
-```
+## 🌐 Overview
+**NEXUS** is a next-generation, AI-driven cyber warfare simulation and threat intelligence platform. Built for SOC teams, security researchers, and red/blue team operators, NEXUS provides a fully interactive environment to simulate advanced persistent threats (APTs), dynamically map them to the **MITRE ATT&CK®** framework, and evaluate automated defensive mitigations (SOAR).
 
-## Setup (ARM64 / Apple Silicon / Raspberry Pi compatible)
+Powered by Large Language Models (LLMs), NEXUS continuously evolves its threat landscape, executing dynamic playbooks and generating real-time executive PDF reports.
 
-### Requirements
-- Python 3.11+
-- pip
-- 8GB RAM recommended
-- ARM64-safe packages only (no x86-only binaries)
+## ✨ Core Features
+- **🧠 Autonomous Threat Actor Simulation:** AI-driven agents that dynamically construct and execute complex attack kill-chains.
+- **🛡️ Dynamic SOAR Defenses:** Automated incident response engines that detect, isolate, and mitigate threats in real-time.
+- **📊 MITRE ATT&CK® Mapping:** Automatic translation of simulation events into standardized MITRE tactics and techniques.
+- **📈 Live Dashboarding:** A sleek, dark-mode Streamlit dashboard featuring live telemetry, network heatmaps, and ELO ratings for Blue vs Red teams.
+- **📄 Executive Reporting:** One-click generation of beautifully formatted PDF intelligence briefings with integrated charts and analysis.
 
-### Install
+## 🏗️ Architecture
+NEXUS is organized into highly modular operational layers:
+- `layer1_recon/`: Threat intelligence gathering and OSINT simulation.
+- `layer2_attack/`: Exploitation, payload delivery, and lateral movement.
+- `layer3_detection/`: Sigma rules, honeypots, and SIEM telemetry.
+- `layer4_evolution/`: Genetic algorithms and LLM-driven payload mutation.
+- `layer5_soar/`: Security Orchestration, Automation, and Response playbooks.
+- `layer6_scoring/`: ELO rating system evaluating attacker vs defender efficiency.
+- `layer7_research/`: STIX/TAXII integrations and PDF report generation.
 
+## 🚀 Quick Start
+
+### 1. Clone the Repository
 ```bash
-# Clone and enter project
-git clone <your-repo>
-cd nexus
+git clone https://github.com/vamsimuddada/NEXUS.git
+cd NEXUS
+```
 
-# Create virtual environment
-python3 -m venv .venv
-source .venv/bin/activate
-
-# Install dependencies (ARM64-safe)
+### 2. Install Dependencies
+Ensure you have Python 3.10+ installed.
+```bash
 pip install -r requirements.txt
 ```
 
-### Run
-
+### 3. Run the Dashboard
+Launch the interactive Streamlit command center:
 ```bash
-# Start a simulation (Phase 1 — Foundation)
-python3 scripts/run_simulation.py
-
-# Launch the war-room dashboard
 streamlit run scripts/dashboard.py
 ```
 
-## Roadmap
+## 📜 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-| Phase | Weeks | Focus |
-|-------|-------|-------|
-| 1 — Foundation  | 1–6   | Digital twin, attacker agents, comms |
-| 2 — Intelligence| 7–12  | SIGMA engine, GNN detector, LLM debate |
-| 3 — Evolution   | 13–16 | Self-rewriting rules, fine-tuning, memory |
-| 4 — Publication | 17–20 | ELO scoring, STIX output, arXiv draft |
-
-## Attacker Personas
-
-| Agent  | Type              | Strategy |
-|--------|-------------------|----------|
-| VIPER  | Nation-state APT  | Patient, living-off-the-land |
-| KRAKEN | Ransomware        | Fast, double extortion |
-| GHOST  | Insider threat    | Env-aware, conflicted |
-| HYDRA  | Hacktivist        | Chaotic, message-driven |
-| NOVA   | AI-native         | Probes and evades the ML detector |
-| CIPHER | Criminal broker   | Initial access specialist |
-
-## Research Question
-> Does adversarial co-evolution between LLM attacker agents and a self-modifying
-> detection system produce emergent TTPs that mirror real-world APT evolution patterns?
+---
+<div align="center">
+  <i>Developed for Advanced Agentic Cyber Defense Simulations.</i>
+</div>

@@ -10,6 +10,9 @@
   </p>
   
   <p align="center">
+    <a href="https://github.com/vamsimuddada/NEXUS/stargazers"><img src="https://img.shields.io/github/stars/vamsimuddada/NEXUS?style=for-the-badge&color=0f172a" alt="Stars"></a>
+    <a href="https://github.com/vamsimuddada/NEXUS/network/members"><img src="https://img.shields.io/github/forks/vamsimuddada/NEXUS?style=for-the-badge&color=0f172a" alt="Forks"></a>
+    <a href="https://github.com/vamsimuddada/NEXUS/issues"><img src="https://img.shields.io/github/issues/vamsimuddada/NEXUS?style=for-the-badge&color=0f172a" alt="Issues"></a>
     <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge&color=0f172a" alt="License: MIT"></a>
     <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.10+-blue.svg?style=for-the-badge&color=0f172a" alt="Python 3.10+"></a>
     <a href="https://streamlit.io"><img src="https://img.shields.io/badge/Streamlit-1.28+-red.svg?style=for-the-badge&color=0f172a" alt="Streamlit"></a>
@@ -67,6 +70,45 @@ graph TD;
 | **MITRE ATT&CK® Mapping** | Automatic translation of complex simulation events into standardized TTPs (Tactics, Techniques, and Procedures). | Threat Intelligence |
 | **Dynamic ELO Scoring** | Chess-style rating system calculating the efficiency and win-rates of Attacker vs Defender models. | Performance Analytics |
 | **Executive Reporting** | One-click generation of beautifully formatted, font-embedded PDF intelligence briefings. | C-Suite & Stakeholder Review |
+
+<br/>
+
+## 📁 Repository Structure
+
+```text
+NEXUS/
+├── .github/                # GitHub Issue Templates & Workflows
+├── assets/                 # Custom Fonts, UI elements, and Banners
+├── data/                   # Simulation Databases and STIX bundles
+├── integrations/           # Third-party SIEM & SOAR webhooks
+├── scripts/                # Dashboard, PDF Generation, and Simulation Runners
+├── tests/                  # PyTest validation suites
+├── requirements.txt        # Strict environment dependencies
+└── README.md               # Project documentation
+```
+
+<br/>
+
+## 💻 Code Example
+
+Integrate NEXUS into your own Python pipelines seamlessly:
+
+```python
+from scripts.run_simulation import NexusSimulation
+
+# Initialize the warfare engine
+engine = NexusSimulation(mode="autonomous", max_steps=50)
+
+# Execute an LLM-driven APT attack
+report = engine.execute_killchain(
+    target_layer="layer2_attack",
+    stealth_mode=True
+)
+
+# Output results mapped to MITRE ATT&CK
+print(f"Simulation Complete. Exploited vulnerabilities: {report.exploits_used}")
+print(f"Mitigated by SOAR: {report.soar_interventions}")
+```
 
 <br/>
 

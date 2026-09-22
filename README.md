@@ -1,7 +1,10 @@
 <div align="center">
-  <img src="assets/images/nexus_logo.png" alt="NEXUS Logo" width="200"/>
-  <h1>NEXUS</h1>
-  <p><b>Advanced Autonomous Cyber Warfare & Threat Intelligence Platform</b></p>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/images/github_banner_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="assets/images/github_banner_light.png">
+    <img alt="NEXUS Banner" src="assets/images/github_banner_light.png" width="100%">
+  </picture>
+  <br/><br/>
   
   [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
   [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)

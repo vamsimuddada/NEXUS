@@ -154,9 +154,7 @@ streamlit run scripts/dashboard.py
 *(The live command center features dark-mode aesthetics, real-time telemetry, network heatmaps, and a buttery-smooth ambient tracking cursor).*
 
 <p align="center">
-  <img src="https://via.placeholder.com/1000x500/0f172a/ffffff?text=+[+NEXUS+Command+Center+UI+Screenshot+]" alt="Dashboard Mockup" width="100%"/>
-  <br/>
-  <i>Replace this placeholder with a high-resolution screenshot of the Streamlit dashboard</i>
+  <img src="assets/images/dashboard_preview.png" alt="NEXUS Dashboard Interface" width="100%"/>
 </p>
 
 <br/>

@@ -154,7 +154,15 @@ streamlit run scripts/dashboard.py
 *(The live command center features dark-mode aesthetics, real-time telemetry, network heatmaps, and a buttery-smooth ambient tracking cursor).*
 
 <p align="center">
-  <img src="assets/images/dashboard_preview.png" alt="NEXUS Dashboard Interface" width="100%"/>
+  <img src="assets/images/dash_1.png" alt="Command Center Header" width="100%"/>
+  <br/><br/>
+  <img src="assets/images/dash_2.png" alt="Active Operation Terminal" width="100%"/>
+  <br/><br/>
+  <img src="assets/images/dash_3.png" alt="Live Threat Graph" width="100%"/>
+  <br/><br/>
+  <img src="assets/images/dash_4.png" alt="Tactics and Perimeter Defense" width="100%"/>
+  <br/><br/>
+  <img src="assets/images/dash_5.png" alt="Active Threat Record" width="100%"/>
 </p>
 
 <br/>

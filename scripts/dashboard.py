@@ -19,15 +19,7 @@ st.set_page_config(page_title="NEXUS Command", page_icon="globe", layout="wide",
 # ══════════════════════════════════════════════════════════════════════════════
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
-
-/* Global Font Overrides */
-html, body, p, div, span, label, input, textarea, select, button, .stMarkdown p, .stMarkdown li {
-    font-family: 'Inter', sans-serif !important;
-}
-h1, h2, h3, h4, h5, h6, .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4, .stMarkdown h5, .stMarkdown h6, [data-testid="stMetricValue"] {
-    font-family: 'Space Grotesk', sans-serif !important;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700;800&display=swap');
 
 /* 1. Animate solid lines to shoot like a laser beam */
 @keyframes laser-shoot {
@@ -498,7 +490,7 @@ if st.session_state.current_page == 'home':
     op_c1, op_c2 = st.columns([3, 7])
     with op_c1:
         with st.container(border=True):
-            provider = st.selectbox("AI Brain", ["Mock (Instant/Offline)", "Ollama (Local AI)", "Gemini (Online AI)"], index=1)
+            provider = st.selectbox("AI Brain", ["Mock (Instant/Offline)", "Ollama (Local AI)", "Gemini (Online AI)"], index=0)
             turns = st.slider("Campaign Turns", 1, 10, 5)
             api_key = ""
             if "Gemini" in provider:

@@ -12,7 +12,6 @@
   <p align="center">
     <a href="https://github.com/vamsimuddada/NEXUS/stargazers"><img src="https://img.shields.io/github/stars/vamsimuddada/NEXUS?style=for-the-badge&color=0f172a" alt="Stars"></a>
     <a href="https://github.com/vamsimuddada/NEXUS/network/members"><img src="https://img.shields.io/github/forks/vamsimuddada/NEXUS?style=for-the-badge&color=0f172a" alt="Forks"></a>
-    <a href="https://github.com/vamsimuddada/NEXUS/issues"><img src="https://img.shields.io/github/issues/vamsimuddada/NEXUS?style=for-the-badge&color=0f172a" alt="Issues"></a>
     <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge&color=0f172a" alt="License: MIT"></a>
     <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.10+-blue.svg?style=for-the-badge&color=0f172a" alt="Python 3.10+"></a>
     <a href="https://streamlit.io"><img src="https://img.shields.io/badge/Streamlit-1.28+-red.svg?style=for-the-badge&color=0f172a" alt="Streamlit"></a>
@@ -26,7 +25,13 @@
 
 <br/>
 
-## 🎯 Executive Summary
+<div align="center">
+  <img src="assets/images/dashboard_demo.gif" alt="NEXUS Dashboard Demo" width="100%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+</div>
+
+<br/>
+
+## ⚡ Executive Summary
 Traditional breach and attack simulation tools rely on static, pre-defined playbooks. **NEXUS** introduces a paradigm shift by utilizing Large Language Models (LLMs) to power autonomous threat actors that continuously evolve their attack vectors. Coupled with a real-time Security Orchestration, Automation, and Response (SOAR) defense engine, NEXUS creates a dynamic, high-fidelity wargaming environment.
 
 <br/>
@@ -48,132 +53,72 @@ graph TD;
         E[(Data Lake / Reports)]
         F[ELO Scoring Engine]
         G[Streamlit Live Dashboard]
-        H[PDF Executive Reporting]
+        
+        C -.-> E
+        C -.-> F
+        F -.-> G
     end
-
-    C -.->|Telemetry| E
-    B -.->|Telemetry| E
-    D -.->|Telemetry| E
     
-    E --> F
-    E --> G
-    E --> H
+    style A fill:#1e293b,stroke:#3b82f6,color:#fff
+    style B fill:#7f1d1d,stroke:#ef4444,color:#fff
+    style C fill:#1e293b,stroke:#3b82f6,color:#fff
+    style D fill:#14532d,stroke:#22c55e,color:#fff
+    style G fill:#0f172a,stroke:#6366f1,color:#fff
 ```
 
 <br/>
 
-## ✨ Enterprise Features
+## 🚀 Core Capabilities
 
-| Feature | Description | Target Use Case |
-|---------|-------------|-----------------|
-| **Autonomous Red Teaming** | LLM-driven agents dynamically construct attack kill-chains based on live defensive feedback. | Penetration Testing & Validation |
-| **Active SOAR Defenses** | Automated incident response engine that isolates nodes, blocks IPs, and deploys honeypots. | Blue Team Training |
-| **MITRE ATT&CK® Mapping** | Automatic translation of complex simulation events into standardized TTPs (Tactics, Techniques, and Procedures). | Threat Intelligence |
-| **Dynamic ELO Scoring** | Chess-style rating system calculating the efficiency and win-rates of Attacker vs Defender models. | Performance Analytics |
-| **Executive Reporting** | One-click generation of beautifully formatted, font-embedded PDF intelligence briefings. | C-Suite & Stakeholder Review |
+| Feature | Description | Engine |
+| :--- | :--- | :--- |
+| **🧠 Autonomous APTs** | Threat actors powered by LLMs (Ollama/Claude) that dynamically adapt. | `debate_engine.py` |
+| **🛡️ Tri-Brain Defense** | Ensembled detection using Rules, Graph Neural Networks (GNN), and LLMs. | `tri_brain.py` |
+| **📊 Real-Time Telemetry** | Live, interactive graphs mapping lateral movement across the network. | `graph_detector.py` |
+| **📑 Executive Reporting** | One-click generation of professional PDF Threat Intel Reports. | `paper_gen.py` |
+| **🎯 MITRE ATT&CK®** | Native mapping of all actor maneuvers to MITRE T-Codes. | `stix_exporter.py` |
 
 <br/>
 
-## 📁 Repository Structure
+<details>
+<summary><b>📂 Explore Project Structure</b> (Click to expand)</summary>
 
 ```text
 NEXUS/
-├── .github/                # GitHub Issue Templates & Workflows
-├── assets/                 # Custom Fonts, UI elements, and Banners
-├── data/                   # Simulation Databases and STIX bundles
-├── integrations/           # Third-party SIEM & SOAR webhooks
-├── scripts/                # Dashboard, PDF Generation, and Simulation Runners
-├── tests/                  # PyTest validation suites
-├── requirements.txt        # Strict environment dependencies
-└── README.md               # Project documentation
+├── core/                  # Core simulation orchestrator
+│   └── simulation.py      # Main state machine
+├── defender/              # Blue Team AI
+│   ├── gnn/               # Graph Neural Network detectors
+│   ├── llm/               # LLM Debate engines
+│   └── tri_brain.py       # Defense ensemble logic
+├── scripts/               # Entrypoints
+│   ├── dashboard.py       # Streamlit UI
+│   └── run_simulation.py  # Headless CLI
+└── requirements.txt       # Optimized dependencies
 ```
-
-<br/>
-
-## 💻 Code Example
-
-Integrate NEXUS into your own Python pipelines seamlessly:
-
-```python
-from scripts.run_simulation import NexusSimulation
-
-# Initialize the warfare engine
-engine = NexusSimulation(mode="autonomous", max_steps=50)
-
-# Execute an LLM-driven APT attack
-report = engine.execute_killchain(
-    target_layer="layer2_attack",
-    stealth_mode=True
-)
-
-# Output results mapped to MITRE ATT&CK
-print(f"Simulation Complete. Exploited vulnerabilities: {report.exploits_used}")
-print(f"Mitigated by SOAR: {report.soar_interventions}")
-```
-
-<br/>
-
-## 🚀 Deployment Guide
-
-<details>
-<summary><b>1. System Requirements</b></summary>
-<br/>
-
-- Windows / macOS / Linux
-- Python 3.10 or higher
-- At least 8GB RAM (16GB recommended for local LLM inference)
-
 </details>
 
-<details>
-<summary><b>2. Installation</b></summary>
 <br/>
 
-Clone the repository and install the strict dependencies:
+## 💻 Quick Start
+
+You can run NEXUS entirely locally. The system is designed to gracefully fallback to mocked telemetry if heavy local AI models (like Ollama) are unavailable.
+
 ```bash
+# 1. Clone the repository
 git clone https://github.com/vamsimuddada/NEXUS.git
 cd NEXUS
+
+# 2. Install requirements
 pip install -r requirements.txt
-```
 
-</details>
-
-<details>
-<summary><b>3. Launching the Command Center</b></summary>
-<br/>
-
-Start the interactive web dashboard. The application will automatically bind to `localhost:8501`.
-```bash
+# 3. Launch the Command Center
 streamlit run scripts/dashboard.py
 ```
 
-</details>
-
 <br/>
 
-## 📈 Dashboard Interface
-*(The live command center features dark-mode aesthetics, real-time telemetry, network heatmaps, and a buttery-smooth ambient tracking cursor).*
+## 🤝 Contributing & License
+NEXUS is open-source and built for the security community. Please read [`CONTRIBUTING.md`](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
-<p align="center">
-  <img src="assets/images/dash_1.png" alt="Command Center Header" width="100%"/>
-  <br/><br/>
-  <img src="assets/images/dash_2.png" alt="Active Operation Terminal" width="100%"/>
-  <br/><br/>
-  <img src="assets/images/dash_3.png" alt="Live Threat Graph" width="100%"/>
-  <br/><br/>
-  <img src="assets/images/dash_4.png" alt="Tactics and Perimeter Defense" width="100%"/>
-  <br/><br/>
-  <img src="assets/images/dash_5.png" alt="Active Threat Record" width="100%"/>
-</p>
-
-<br/>
-
-## 🛡️ License & Legal
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for complete details.
-
-> **Disclaimer:** NEXUS is designed strictly for educational purposes, defensive research, and authorized simulations. Ensure you have explicit authorization before simulating attacks on any network.
-
----
-<div align="center">
-  <i>Developed for Advanced Agentic Cyber Defense.</i>
-</div>
+This project is licensed under the **MIT License** - see the [`LICENSE`](LICENSE) file for details.

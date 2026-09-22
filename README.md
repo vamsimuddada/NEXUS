@@ -16,6 +16,7 @@
     <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge&color=0f172a" alt="License: MIT"></a>
     <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.10+-blue.svg?style=for-the-badge&color=0f172a" alt="Python 3.10+"></a>
     <a href="https://streamlit.io"><img src="https://img.shields.io/badge/Streamlit-1.28+-red.svg?style=for-the-badge&color=0f172a" alt="Streamlit"></a>
+    <a href="https://nexus-vamsimuddada.streamlit.app/"><img src="https://img.shields.io/badge/Live_Demo-Online-success.svg?style=for-the-badge&color=0f172a" alt="Live Demo"></a>
   </p>
 </div>
 
